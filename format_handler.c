@@ -1,28 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   format_handler.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sal-kurd <sal-kurd@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/05 19:04:17 by sal-kurd          #+#    #+#             */
+/*   Updated: 2022/07/05 19:36:01 by sal-kurd         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft_printf.h"
 
-size_t format_check(va_list argptr, char c)
+size_t	format_check(va_list argptr, char c)
 {
-	size_t len;
+	size_t	len;
 
 	len = 0;
-	if(c == 'c')
+	if (c == 'c')
 		len += ft_putchar(va_arg(argptr, int));
-	else if(c == 's')
+	else if (c == 's')
 		len += ft_putstr(va_arg(argptr, char *));
-	else if(c == 'p')
+	else if (c == 'p')
 		len += ptr_handler(va_arg(argptr, uintptr_t));
-	else if(c == '%')
+	else if (c == '%')
 		len += ft_putchar('%');
-	else if(c == 'd')
+	else if (c == 'd')
 		len += nb_handler(va_arg(argptr, int));
-	else if(c == 'i')
+	else if (c == 'i')
 		len += nb_handler(va_arg(argptr, int));
-	else if(c == 'u')
+	else if (c == 'u')
 		len += unsigned_handler(va_arg(argptr, unsigned int));
-	else if(c == 'x')
+	else if (c == 'x')
 		len += hex_handler(va_arg(argptr, unsigned int), 0);
-	else if(c == 'X')
+	else if (c == 'X')
 		len += hex_handler(va_arg(argptr, unsigned int), 1);
 	return (len);
-		 
 }

@@ -1,20 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sal-kurd <sal-kurd@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/05 19:04:17 by sal-kurd          #+#    #+#             */
+/*   Updated: 2022/07/05 19:29:06 by sal-kurd         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft_printf.h"
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	va_list argptr;
-	va_start(argptr, format);
-	size_t i;
-	size_t len;
+	va_list	argptr;
+	size_t	i;
+	size_t	len;
 
 	i = 0;
 	len = 0;
-	while(format[i])
+	va_start(argptr, format);
+	while (format[i])
 	{
-		if(format[i] == '%' && format[i + 1])
+		if (format[i] == '%' && format[i + 1])
 		{
 			i++;
-			//printf("found specifier %c\n", format[i]);
 			len += format_check(argptr, format[i]);
 		}
 		else
