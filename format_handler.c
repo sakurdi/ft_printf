@@ -12,7 +12,7 @@ size_t format_check(va_list argptr, char c)
 	else if(c == 'p')
 		len += ptr_handler(va_arg(argptr, uintptr_t));
 	else if(c == '%')
-		len += ft_putchar(va_arg(argptr, int));
+		len += ft_putchar('%');
 	else if(c == 'd')
 		len += nb_handler(va_arg(argptr, int));
 	else if(c == 'i')
